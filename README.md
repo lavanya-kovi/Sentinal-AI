@@ -1,7 +1,6 @@
 # SentinelAI: Privacy-Preserving Credit Risk Scoring API
 
 **Course:** Secure and Private AI — Georgia State University, Spring 2026  
-**Team:** Lavanya Kovi, Sirichandana Bikkasani, Sai Yaswanth Reddy Suram  
 **Primary Attack-Defense Pair:** Membership Inference Attack (MIA) vs. DP-SGD
 
 ---
@@ -44,37 +43,6 @@ SentinelAI_Code/
 
 ---
 
-## Setup and Reproduction
-
-### Option 1: Google Colab (Recommended)
-
-**Step 1:** Upload `SentinelAI.ipynb` to [Google Colab](https://colab.research.google.com)
-
-**Step 2:** Set GPU runtime: `Runtime → Change runtime type → T4 GPU`
-
-**Step 3:** Run Cell 1 to install numpy:
-```python
-!pip install numpy==1.26.4
-```
-Then go to `Runtime → Restart runtime`
-
-**Step 4:** Run all remaining cells (Cell 2 through Cell 22) in order.
-
-**Total runtime:** ~35 minutes on T4 GPU, ~60+ minutes on CPU
-
-### Option 2: Local Machine
-
-```bash
-# Clone or unzip this package
-cd SentinelAI_Code
-
-# Install dependencies (numpy first due to version conflicts)
-pip install numpy==1.26.4
-pip install -r requirements.txt
-
-# Open notebook
-jupyter notebook SentinelAI.ipynb
-```
 
 ### Dataset
 
@@ -82,35 +50,8 @@ jupyter notebook SentinelAI.ipynb
 
 Download options:
 - **Kaggle:** https://www.kaggle.com/competitions/home-credit-default-risk/data
-- **Google Drive (our copy):** https://drive.google.com/drive/folders/1jXcOE23QSGZf-pq9JA7qITsZMLEcxU-0
-
-Set `DATA_DIR` in Cell 3 to the folder containing `application_train.csv`.
-
 ---
 
-## Running the API
-
-```bash
-# Start the FastAPI service
-uvicorn api.main:app --reload --port 8000
-
-# 1. Get a JWT token
-curl -X POST http://localhost:8000/token \
-     -d "username=demo&password=secret"
-
-# 2. Make a prediction (replace <token>)
-curl -X POST http://localhost:8000/v1/predict \
-     -H "Authorization: Bearer <token>" \
-     -H "Content-Type: application/json" \
-     -d '{"features": [0.5, 0.3, 0.8, ...], "applicant_id": "APP_001"}'
-
-# 3. Health check
-curl http://localhost:8000/health
-```
-
-The API returns **label-only** output (DEFAULT_RISK or NO_DEFAULT) — no probabilities exposed.
-
----
 
 ## Notebook Cell Guide
 
