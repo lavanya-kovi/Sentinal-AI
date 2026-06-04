@@ -1,0 +1,57 @@
+{
+  "project": "SentinelAI",
+  "course": "Secure and Private AI, Georgia State University, Spring 2026",
+  "team": ["Lavanya Kovi", "Sirichandana Bikkasani", "Sai Yaswanth Reddy Suram"],
+  "dataset": {
+    "name": "Home Credit Default Risk",
+    "source": "https://www.kaggle.com/competitions/home-credit-default-risk/data",
+    "records": 307511,
+    "raw_features": 122,
+    "engineered_features": 165,
+    "default_rate": 0.081,
+    "train_size": 215257,
+    "val_size": 46127,
+    "test_size": 46127,
+    "smote_rate": 0.25,
+    "smote_samples": 263840
+  },
+  "baseline": {
+    "mlp_train_auc": 0.7591,
+    "mlp_val_auc": 0.7405,
+    "mlp_test_auc": 0.7430,
+    "lr_test_auc": 0.7461
+  },
+  "dp_sgd": {
+    "0.5": {"test_auc": 0.7361, "epsilon_spent": 0.49},
+    "1.0": {"test_auc": 0.7346, "epsilon_spent": 0.99},
+    "2.0": {"test_auc": 0.7383, "epsilon_spent": 2.00},
+    "4.0": {"test_auc": 0.7377, "epsilon_spent": 3.99},
+    "8.0": {"test_auc": 0.7378, "epsilon_spent": 8.00}
+  },
+  "mia_attack": {
+    "baseline": {"accuracy": 0.5049, "advantage": 0.0049},
+    "0.5": {"accuracy": 0.5109, "advantage": 0.0109},
+    "1.0": {"accuracy": 0.5069, "advantage": 0.0069},
+    "2.0": {"accuracy": 0.5110, "advantage": 0.0110},
+    "4.0": {"accuracy": 0.5021, "advantage": 0.0021},
+    "8.0": {"accuracy": 0.5069, "advantage": 0.0069}
+  },
+  "extraction": {
+    "undefended": {"100": 0.8505, "500": 0.9024, "1000": 0.9218, "5000": 0.9272, "10000": 0.9295},
+    "label_only": {"100": 0.7463, "500": 0.8208, "1000": 0.8353, "5000": 0.8922, "10000": 0.9087},
+    "dp_label_only": {"100": 0.9432, "500": 0.9457, "1000": 0.9472, "5000": 0.9561, "10000": 0.9627}
+  },
+  "fairness": {
+    "baseline": {"air": 1.2636, "eq_odds_diff": 0.1481, "dem_par_diff": 0.1471},
+    "0.5": {"air": 1.0431, "eq_odds_diff": 0.0783, "dem_par_diff": 0.0399},
+    "1.0": {"air": 1.0506, "eq_odds_diff": 0.1023, "dem_par_diff": 0.0464},
+    "2.0": {"air": 1.0573, "eq_odds_diff": 0.1054, "dem_par_diff": 0.0521},
+    "4.0": {"air": 1.0630, "eq_odds_diff": 0.1138, "dem_par_diff": 0.0562},
+    "8.0": {"air": 1.0635, "eq_odds_diff": 0.1128, "dem_par_diff": 0.0565}
+  },
+  "three_states": {
+    "normal": {"auc": 0.7430, "mia_advantage": "N/A", "fairness_air": 1.2636, "privacy": "None"},
+    "under_attack": {"auc": 0.7430, "mia_advantage": 0.0049, "fairness_air": 1.2636, "privacy": "None"},
+    "with_defense": {"auc": 0.7383, "mia_advantage": 0.0110, "fairness_air": 1.0573, "privacy": "epsilon=2.0, delta=1e-5"}
+  }
+}
