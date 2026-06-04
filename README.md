@@ -102,14 +102,6 @@ Defenses were not assumed to work — they were attacked:
 
 ---
 
-## Repository contents
-
-The full implementation, including every experiment with its plots and outputs, lives in **`SentinelAI.ipynb`**, which renders directly on GitHub — the clearest way to review the actual work. The API service (`api/`), model definition (`models/`), standalone training script, and experimental metrics (`results/`) are also included.
-
-> *Note: the Home Credit dataset is not redistributed here; it is available from Kaggle under its own terms.*
-
----
-
 ## Limitations and future direction
 
 - The current feature set caps predictive power at roughly 0.74 AUC; incorporating richer signals (credit-bureau history, prior application data) is the most direct path toward a higher ceiling.
