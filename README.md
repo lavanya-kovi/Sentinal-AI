@@ -52,36 +52,6 @@ Download options:
 - **Kaggle:** https://www.kaggle.com/competitions/home-credit-default-risk/data
 ---
 
-
-## Notebook Cell Guide
-
-| Cell | Stage | What It Does |
-|------|-------|-------------|
-| 1 | Setup | Install numpy==1.26.4 → **restart runtime** |
-| 2 | Setup | Install all libraries (torch, opacus, fairlearn, etc.) |
-| 3 | Setup | Mount Google Drive, set DATA_DIR |
-| 4 | Stage 1 | Load Home Credit dataset (307,511 records) |
-| 5 | Stage 1 | Preprocess: encode, impute, scale, SMOTE, split |
-| 6 | Stage 2 | Define CreditRiskMLP (165→256→128→64→2) |
-| 7 | Stage 2 | Train baseline MLP (no DP) |
-| 8 | Stage 2 | Evaluate — **Normal Service** (AUC 0.7430) |
-| 9 | Stage 2 | Train 5 DP-SGD models (ε = 0.5 to 8.0) |
-| 10 | Stage 5 | Plot privacy-utility curve |
-| 11 | Stage 3 | MIA attack — **Attack + Defense states** |
-| 12 | Stage 5 | Plot MIA advantage bar chart |
-| 13 | Stage 3 | Model extraction attack (KnockoffNets) |
-| 14 | Stage 5 | Plot extraction fidelity curve |
-| 15 | Stage 3 | Extraction defense interpretation |
-| 16 | Stage 3 | Fairness audit (Fairlearn — AIR, EqOdds) |
-| 17 | Stage 5 | Three-way trade-off plot |
-| 18 | Stage 5 | Save all results to JSON |
-| 19 | Stage 4 | Live FastAPI demo (real server, 5 defense layers) |
-| 20 | — | Honest reflection + 7-pillar security matrix |
-| 21 | Stage 5 | Updated MIA chart |
-| 22 | Stage 5 | Full interactive dashboard (downloads HTML) |
-
----
-
 ## Key Results
 
 ### Three Service States
